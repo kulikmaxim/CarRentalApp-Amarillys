@@ -1,0 +1,44 @@
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef > Id </th>
+    <td mat-cell *matCellDef="let order"> {{order.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef> User Name </th>
+    <td mat-cell *matCellDef="let order">{{order.user.firstName}} {{order.user.lastName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="car">
+    <th mat-header-cell *matHeaderCellDef> Car </th>
+    <td mat-cell *matCellDef="let order"> {{order.car.mark}} {{order.car.model}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rentalBeginDate">
+    <th mat-header-cell *matHeaderCellDef> Begin date </th>
+    <td mat-cell *matCellDef="let order"> {{order.rentalBeginDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rentalEndDate">
+    <th mat-header-cell *matHeaderCellDef> End date </th>
+    <td mat-cell *matCellDef="let order"> {{order.rentalEndDate | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="comment">
+    <th mat-header-cell *matHeaderCellDef> Comment </th>
+    <td mat-cell *matCellDef="let order"> {{order.comment}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let order"> <button mat-raised-button (click)='editOrder(order.id)'>Edit</button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let order"> <button mat-raised-button (click)='deleteOrder(order.id)'>Delete</button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

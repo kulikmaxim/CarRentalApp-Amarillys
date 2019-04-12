@@ -1,0 +1,34 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Comment" formControlName="comment">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="pickerBegin" placeholder="Begin date" formControlName="beginDate"
+      (click)="pickerBegin.open()">
+    <mat-datepicker-toggle matSuffix [for]="pickerBegin"></mat-datepicker-toggle>
+    <mat-datepicker #pickerBegin></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="pickerEnd" placeholder="End date" formControlName="endDate"
+      (click)="pickerEnd.open()">
+    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+    <mat-datepicker #pickerEnd></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Car" formControlName="carId">
+      <mat-option *ngFor="let car of cars" [value]="car.id">
+        {{car.mark}} {{car.model}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="User" formControlName="userId">
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{user.firstName}} {{user.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="form-group">
+    <button type="submit" mat-button color="primary">Apply</button>
+  </div>
+</form>

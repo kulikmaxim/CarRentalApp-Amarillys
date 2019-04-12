@@ -1,0 +1,10 @@
+<app-order-filter
+  [filter]="filter"
+  (filtered)="onApplyFilter($event)">
+</app-order-filter>
+<button mat-raised-button (click)="openDialog()">Add order</button>
+<app-order-list 
+  [orders]="orders"
+  (onDelete)="onDeleteOrder($event)"
+  (onEdit)="openDialog($event)">
+</app-order-list>
